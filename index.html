@@ -3,26 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Roulette 14.02</title>
+    <title>Love Notes 💌</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Love Roulette 🌹</h1>
-        <p class="subtitle">Laissez le destin pimenter votre soirée...</p>
-        
-        <div id="display-card" class="card empty">
-            <div class="emoji-placeholder">🎰</div>
-            <p>Cliquez pour découvrir votre défi...</p>
-        </div>
 
-        <button id="spin-btn" onclick="lancerRoulette()">Tirer au sort</button>
-        
-        <div id="share-zone" class="hidden">
-            <button class="whatsapp-btn" onclick="partager()">Envoyer le défi à mon partenaire 💌</button>
+    <div id="first-visit-screen" class="hidden">
+        <div class="lock-content">
+            <div class="flower-anim">💝</div>
+            <h1 class="welcome-text">Bienvenue sur Love Notes</h1>
+            <p class="subtitle">Créez une déclaration d'amour mystérieuse et unique pour votre Valentin(e).</p>
+            <a href="create.html" id="start-btn" class="btn-primary">Déclarer ma flamme</a>
+            
+            <div id="historique-zone" class="hidden" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+                <p style="font-size: 0.8rem; color: #d63384; font-weight: bold;">Tes messages envoyés :</p>
+                <div id="liste-historique"></div>
+            </div>
         </div>
     </div>
+
+    <div id="lock-screen" class="hidden">
+        <div class="lock-content">
+            <div class="flower-anim">🔒</div>
+            <h1 class="welcome-text">Coucou <span class="dynamic-name">...</span>,</h1>
+            <p class="instruction">Chargement du secret...</p>
+            
+            <div class="input-area">
+                <input type="text" id="answer" placeholder="Entre le code secret...">
+                <button onclick="checkCode()" id="validate-btn">Déverrouiller ❤️</button>
+            </div>
+            <p id="error-msg" style="display:none; color: #d63384; margin-top: 10px;">Ce n'est pas le bon code... 🤫</p>
+        </div>
+    </div>
+
+    <div id="message-screen" class="message-container hidden">
+        <div class="envelope">
+            <div id="text-target" class="typing-text"></div>
+            
+            <div id="reply-area" class="hidden">
+                <hr>
+                <p class="instruction">Laisse-lui un petit mot en retour...</p>
+                <form id="valentine-form" onsubmit="envoyerReponseAnonyme(event)">
+                    <textarea id="reply-text" placeholder="Ton message secret..." required></textarea>
+                    <button type="submit" id="send-reply">Répondre anonymement ✨</button>
+                </form>
+                <p id="success-msg" class="hidden" style="color: #28a745; margin-top: 10px; font-weight: bold;">Ton message a été transmis en secret... ✔️</p>
+                
+                <div style="margin-top: 30px;">
+                    <p style="font-size: 0.8rem;">Toi aussi, tu as un secret à dire ?</p>
+                    <a href="create.html" class="btn-secondary" style="display: inline-block; text-decoration: none; font-size: 0.8rem;">Déclarer ma flamme</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

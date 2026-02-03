@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer ma déclaration 💌</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="lock-content">
+        <h2 class="welcome-text">Configure ton secret</h2>
+        
+        <div class="form-group">
+            <input type="text" id="input-to" placeholder="Prénom du destinataire">
+            <input type="text" id="input-hint" placeholder="Énigme du code (ex: nom de ta maman)">
+            <div style="display: flex; gap: 5px;">
+                <input type="text" id="input-code1" placeholder="Code 1">
+                <input type="text" id="input-code2" placeholder="Code 2 (optionnel)">
+            </div>
+            <textarea id="input-msg" placeholder="Écris ton message ici..."></textarea>
+        </div>
+
+        <button onclick="genererLien()" id="validate-btn">Générer le lien magique ✨</button>
+
+        <div id="result-zone" class="hidden">
+            <p style="font-size: 0.8rem; margin-top: 20px; color: #666;">Lien prêt à envoyer :</p>
+            <input type="text" id="final-url" readonly>
+            <button onclick="copierLien()" id="copy-btn" class="btn-secondary">Copier le lien 📋</button>
+        </div>
+
+        <div id="historique-zone" class="hidden" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h3 style="font-size: 0.8rem; color: #d63384;">Tes envois récents :</h3>
+            <div id="liste-historique"></div>
+        </div>
+        
+        <br>
+        <a href="index.html" style="font-size: 0.7rem; color: #888; text-decoration: none;">← Retour à l'accueil</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
