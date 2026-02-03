@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Roulette 14.02</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Love Roulette 🌹</h1>
+        <p class="subtitle">Laissez le destin pimenter votre soirée...</p>
+        
+        <div id="display-card" class="card empty">
+            <div class="emoji-placeholder">🎰</div>
+            <p>Cliquez pour découvrir votre défi...</p>
+        </div>
+
+        <button id="spin-btn" onclick="lancerRoulette()">Tirer au sort</button>
+        
+        <div id="share-zone" class="hidden">
+            <button class="whatsapp-btn" onclick="partager()">Envoyer le défi à mon partenaire 💌</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
