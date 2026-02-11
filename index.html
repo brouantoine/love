@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Notes 💌</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
-    <div id="first-visit-screen" class="hidden">
-        <div class="lock-content">
-            <div class="flower-anim">💝</div>
-            <h1 class="welcome-text">Bienvenue sur Love Notes</h1>
-            <p class="subtitle">Créez une déclaration d'amour mystérieuse et unique pour votre Valentin(e).</p>
-            <a href="create.html" id="start-btn" class="btn-primary">Déclarer ma flamme</a>
-            
-            <div id="historique-zone" class="hidden" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
-                <p style="font-size: 0.8rem; color: #d63384; font-weight: bold;">Tes messages envoyés :</p>
-                <div id="liste-historique"></div>
-            </div>
-        </div>
-    </div>
+    <div id="first-visit-screen"></div>
 
     <div id="lock-screen" class="hidden">
         <div class="lock-content">
