@@ -291,54 +291,57 @@ function copierLienDirect(url) {
 }
 
 // =================================================================
-// 6. ANIMATIONS & DESIGN (AJOUTÉ POUR TOI)
+// 6. ANIMATIONS & DESIGN (VERSION INTENSE)
 // =================================================================
 
 function initAnimations() {
     createBackgroundPetals();
     attachButtonEffects();
+    // Petit bonus : une explosion de départ pour que l'écran ne soit pas vide
+    setTimeout(() => {
+        for(let i=0; i<10; i++) createExplosionPetal(window.innerWidth/2, window.innerHeight/2);
+    }, 500);
 }
 
-// --- A. Pétales qui tombent en fond ---
+// --- A. Pluie de pétales (DENSITÉ AUGMENTÉE) ---
 function createBackgroundPetals() {
     const container = document.body;
     
-    // On lance la boucle de création
+    // On crée un pétale toutes les 150ms (au lieu de 400ms) -> Beaucoup plus de pétales
     setInterval(() => {
         const petal = document.createElement('div');
         petal.classList.add('falling-petal');
         
-        // Taille aléatoire (plus petit pour le réalisme)
-        const size = Math.random() * 15 + 8; 
+        // Taille aléatoire : certains gros, certains petits
+        const size = Math.random() * 20 + 10; 
         petal.style.width = `${size}px`;
         petal.style.height = `${size}px`;
         
-        // Position horizontale aléatoire
+        // Position horizontale aléatoire (toute la largeur)
         petal.style.left = `${Math.random() * 100}vw`;
         
-        // Durée de chute aléatoire
-        const duration = Math.random() * 5 + 6; 
+        // Durée de chute variable (certains tombent vite, d'autres planent)
+        const duration = Math.random() * 4 + 4; // Entre 4 et 8 secondes
         petal.style.animationDuration = `${duration}s`;
         
-        // Décalage pour ne pas que tous commencent pareil
+        // Délai aléatoire pour fluidifier le début
         petal.style.animationDelay = `-${Math.random() * 5}s`;
 
         container.appendChild(petal);
 
-        // Nettoyage pour ne pas saturer la mémoire
+        // Nettoyage
         setTimeout(() => { petal.remove(); }, duration * 1000);
-    }, 400); 
+    }, 150); // <-- C'est ici que je règle la quantité (plus le chiffre est petit, plus il y a de pétales)
 }
 
 // --- B. Explosion de pétales au clic ---
 function attachButtonEffects() {
-    // On attend un peu que le DOM soit prêt, puis on attache l'event
     setTimeout(() => {
         const buttons = document.querySelectorAll('button');
         buttons.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Créer 20 mini pétales
-                for(let i=0; i<20; i++) {
+                // Grosse explosion : 30 particules
+                for(let i=0; i<30; i++) {
                     createExplosionPetal(e.clientX, e.clientY);
                 }
             });
@@ -351,26 +354,27 @@ function createExplosionPetal(x, y) {
     petal.classList.add('click-petal');
     document.body.appendChild(petal);
 
-    // Couleurs : Blanc, Or, Rouge clair
-    const colors = ['#ffffff', '#ffd700', '#ff8fa3'];
+    // Couleurs de l'explosion : Rouge vif, Or et Blanc
+    const colors = ['#ff0a54', '#ffd700', '#ffffff', '#ff477e'];
     petal.style.background = colors[Math.floor(Math.random() * colors.length)];
 
-    // Position de départ
-    petal.style.left = `${x}px`;
-    petal.style.top = `${y}px`;
+    // Si on est sur mobile, on centre un peu si le clic est bizarre
+    const startX = x || window.innerWidth / 2;
+    const startY = y || window.innerHeight / 2;
 
-    // Calcul de la trajectoire d'explosion
+    petal.style.left = `${startX}px`;
+    petal.style.top = `${startY}px`;
+
+    // Physique de l'explosion
     const angle = Math.random() * Math.PI * 2;
-    const velocity = Math.random() * 120 + 60; // Distance
+    const velocity = Math.random() * 150 + 50; 
     const tx = Math.cos(angle) * velocity;
     const ty = Math.sin(angle) * velocity;
     const rot = Math.random() * 360;
 
-    // Variables CSS pour l'animation
     petal.style.setProperty('--tx', `${tx}px`);
     petal.style.setProperty('--ty', `${ty}px`);
     petal.style.setProperty('--rot', `${rot}deg`);
 
-    // Suppression après animation
     setTimeout(() => { petal.remove(); }, 800);
 }

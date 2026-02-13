@@ -1,115 +1,129 @@
-/* --- POLICES D'ÉCRITURE --- */
+/* --- 1. IMPORTS & VARIABLES --- */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
 
 :root {
-    --primary: #d90429;      /* Rouge Amour */
-    --dark-red: #640d14;     /* Rouge Profond */
-    --gold: #ffd700;         /* Or pour le texte */
-    --glass: rgba(255, 255, 255, 0.1); /* Effet Verre */
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --primary: #ff0a54;      /* Rouge Framboise Vibrant */
+    --deep-red: #590016;     /* Rouge Sang Profond */
+    --gold: #ffd700;         /* Or Luxueux */
+    --glass: rgba(20, 0, 5, 0.6); /* Verre sombre pour faire ressortir le texte */
+    --glass-border: rgba(255, 100, 100, 0.3);
+    --text-light: #fff0f5;
 }
 
+/* --- 2. CONFIGURATION GÉNÉRALE (MOBILE FIRST) --- */
 body { 
     margin: 0; 
     height: 100vh; 
+    width: 100vw;
     display: flex; 
     justify-content: center; 
     align-items: center;
-    /* Fond dégradé radial réaliste et romantique */
-    background: radial-gradient(circle at center, #800f2f 0%, #250902 100%);
+    
+    /* DÉGRADÉ ULTRA RÉALISTE & PROFOND */
+    background: radial-gradient(circle at 50% 30%, #a4161a 0%, #660708 40%, #000000 100%);
+    
     font-family: 'Montserrat', sans-serif; 
-    overflow: hidden;
-    color: white;
+    overflow: hidden; /* Empêche le scroll des pétales */
+    color: var(--text-light);
 }
 
-/* --- LE CONTENEUR DE VERRE (Glassmorphism) --- */
+/* --- 3. CONTENEURS (VERRE & DESIGN) --- */
 .lock-content, .envelope { 
     position: relative;
     text-align: center; 
-    padding: 35px; 
-    width: 85%;
+    
+    /* Largeur optimisée mobile */
+    width: 88%; 
     max-width: 400px;
+    padding: 30px 20px;
     
-    /* L'effet de verre réaliste */
+    /* Effet Glassmorphism Sombre */
     background: var(--glass); 
-    border-radius: 30px;
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px;
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
     
-    z-index: 10; /* Important : Au-dessus des pétales de fond */
+    z-index: 10; /* Au-dessus des pétales de fond */
 }
 
-/* Pour la lecture du message */
+/* Spécifique à la lecture du message (Papier) */
 .envelope {
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
-    color: #333; /* Texte sombre sur fond clair */
-    background: rgba(255, 255, 255, 0.9); /* Fond papier plus opaque */
+    background: rgba(255, 255, 255, 0.96); /* Papier blanc cassé */
+    color: #333; /* Texte lisible */
+    border: none;
 }
 
-/* --- TYPOGRAPHIE --- */
+/* --- 4. TYPOGRAPHIE --- */
 h1, h2, .welcome-text {
     font-weight: 300;
     margin-bottom: 15px;
-    letter-spacing: 1px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-/* Le Nom Personnalisé (Style Luxe) */
+/* LE NOM PERSONNALISÉ (Style Signature) */
 .dynamic-name { 
     font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem; 
+    font-size: 3.5rem; /* Grand pour l'impact */
     display: block;
-    margin: 5px 0 20px 0;
+    margin: 10px 0 20px 0;
+    line-height: 1.1;
     
-    /* Effet Or Brillant */
-    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    /* Effet Or Métallique */
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 .instruction {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.8);
+    color: #ffc2d1; /* Rose pâle */
     margin-bottom: 20px;
+    font-style: italic;
 }
 
-/* --- CHAMPS DE SAISIE --- */
+/* --- 5. CHAMPS DE SAISIE (INPUTS) --- */
 input, textarea { 
     width: 100%; 
-    padding: 15px; 
+    padding: 14px; 
     margin-top: 15px; 
     border-radius: 15px; 
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255, 255, 255, 0.15); /* Champ semi-transparent */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Fond semi-transparent */
+    background: rgba(0, 0, 0, 0.2); 
     color: white;
+    
     outline: none; 
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box; /* Empêche de dépasser */
     transition: 0.3s;
-    box-sizing: border-box;
 }
 
-/* Exception pour la zone de création (fonds blancs pour lisibilité) */
-input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.6); }
+input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.6); }
 
 input:focus, textarea:focus {
-    background: rgba(255,255,255,0.25);
+    background: rgba(0, 0, 0, 0.4);
     border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
-/* Couleur sombre pour les inputs dans la création si besoin de contraste */
-#create-page input, #create-page textarea {
-    color: white;
-}
+/* Pour le formulaire de création (si besoin de contraste) */
+#create-page input { color: white; }
 
-/* --- BOUTONS --- */
+/* --- 6. BOUTONS (INTERACTIFS) --- */
 button {
-    background: linear-gradient(135deg, var(--primary), #800f2f); 
+    background: linear-gradient(135deg, #ff0a54, #800f2f); 
     color: white; 
     border: none; 
     padding: 15px;
@@ -119,61 +133,57 @@ button {
     font-weight: 600; 
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: transform 0.1s, box-shadow 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     position: relative;
     overflow: hidden;
 }
 
+/* Effet au survol */
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(217, 4, 41, 0.4);
+    box-shadow: 0 12px 25px rgba(255, 10, 84, 0.5);
+    transform: translateY(-2px);
 }
 
+/* Effet Clic (Enfoncement) - Demandé pour le bouton copier */
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.96); /* L'effet de clic physique */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* --- ELEMENTS CACHÉS & ERREURS --- */
-.hidden { display: none !important; }
-
-#error-msg { 
-    color: #ffadad; 
-    font-size: 0.9rem;
-    margin-top: 10px;
-    display: none;
+/* Bouton secondaire (Copier) - Style spécifique */
+.btn-secondary {
+    background: linear-gradient(135deg, #ffffff, #e0e0e0);
+    color: #333;
+    font-weight: bold;
 }
+.btn-secondary:hover { background: #fff; }
 
-.shake { animation: shake 0.5s; }
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
+/* --- 7. ANIMATIONS DE PÉTALES (CSS) --- */
 
-/* =========================================
-   ANIMATIONS (C'est là que ça se joue)
-   ========================================= */
-
-/* 1. Pétales qui tombent en fond */
+/* Pétales de fond (chute) */
 .falling-petal {
     position: absolute;
     top: -50px;
-    background: linear-gradient(to bottom right, #ff4d6d, #a4161a);
-    border-radius: 150% 0 150% 0;
-    opacity: 0.7;
-    z-index: 1; /* Derrière le formulaire */
+    /* Rouge Rubis éclatant */
+    background: linear-gradient(135deg, #ff0040, #9e0031);
+    border-radius: 150% 0 150% 0; /* Forme de pétale */
+    opacity: 0.8;
+    z-index: 1; /* Derrière le contenu */
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
     animation: fall linear forwards;
     pointer-events: none;
 }
 
 @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    20% { opacity: 0.8; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+    10% { opacity: 0.9; }
+    100% { transform: translateY(110vh) rotate(360deg) scale(1); opacity: 0; }
 }
 
-/* 2. Explosion au clic */
+/* Explosion au clic */
 .click-petal {
     position: absolute;
     width: 10px;
@@ -189,14 +199,44 @@ button:active {
     100% { transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--rot)); opacity: 0; }
 }
 
-/* Ajustements pour la zone d'historique */
-#historique-zone {
-    text-align: left;
-    margin-top: 30px;
-    background: rgba(0,0,0,0.2);
-    padding: 15px;
-    border-radius: 15px;
+/* --- 8. UTILITAIRES & ETATS --- */
+.hidden { display: none !important; }
+
+#error-msg { 
+    color: #ff8fa3; 
+    background: rgba(0,0,0,0.3);
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    display: none;
 }
 
-#liste-historique strong { color: var(--gold); }
-#liste-historique div { color: #333; } /* Texte liste reste lisible */
+#result-zone { margin-top: 20px; }
+#final-url { 
+    background: white; 
+    color: #333; 
+    font-size: 0.8rem; 
+    padding: 10px;
+}
+
+/* Animation de secousse en cas d'erreur */
+.shake { animation: shake 0.5s; }
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Styles pour la liste historique (gérée par JS mais stylée ici) */
+#liste-historique button {
+    margin-top: 0;
+    width: auto;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    background: #eee;
+    color: #333;
+    border: 1px solid #ccc;
+    box-shadow: none;
+}
+#liste-historique button:active { transform: scale(0.95); }
