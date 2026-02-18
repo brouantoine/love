@@ -69,11 +69,13 @@ h1, h2, .welcome-text {
 
 /* LE NOM PERSONNALISÉ (Style Signature) */
 .dynamic-name { 
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem; /* Grand pour l'impact */
+    font-family:cursive;
+    font-size: 1.5rem; /* Taille réduite (environ 24px) */
     display: block;
-    margin: 10px 0 20px 0;
-    line-height: 1.1;
+    margin: 5px 0 10px 0; /* Marges réduites pour suivre la taille */
+    line-height: 1.2;
+    font-weight: 400; /* Force l'aspect fin si besoin */
+    letter-spacing: 0.5px; /* Optionnel : aère un peu les lettres */
     
     /* Effet Or Métallique */
     background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7);
